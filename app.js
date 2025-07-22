@@ -1,1 +1,1 @@
-console.log('Hello world2');
+let value = 1 ;
