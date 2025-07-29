@@ -22,39 +22,39 @@ console.log(dollarList);
 
 // Task 3
 
-// let integerNum = parseInt(prompt('Enter a integer value'));
-// let integerList = '';
+let integerNum = parseInt(prompt('Enter a integer value'));
+let integerList = '';
 
-// for (let i = 1; i <= 100; i++) {
-// 	if (i ** 2 <= integerNum) {
-// 		integerList += i + ', ';
-// 	}
-// }
+for (let i = 1; i <= 100; i++) {
+	if (i ** 2 <= integerNum) {
+		integerList += i + ', ';
+	}
+}
 
-// console.log(integerList);
+console.log(integerList);
 
 // Task 4
 
-// let integerNum2 = parseInt(prompt('Enter a integer value!'));
+let integerNum2 = parseInt(prompt('Enter a integer value!'));
 
-// let isInteger = true;
+let isInteger = true;
 
-// if (integerNum2 <= 1) {
-// 	isInteger = false;
-// } else {
-// 	for (let i = 2; i < integerNum2; i++) {
-// 		if (integerNum2 % i === 0) {
-// 			isInteger = false;
-// 			break;
-// 		}
-// 	}
-// }
+if (integerNum2 <= 1) {
+	isInteger = false;
+} else {
+	for (let i = 2; i < integerNum2; i++) {
+		if (integerNum2 % i === 0) {
+			isInteger = false;
+			break;
+		}
+	}
+}
 
-// if (isInteger) {
-// 	console.log(integerNum2 + ' is a integer number');
-// } else {
-// 	console.log(integerNum2 + ' isnt a integer number');
-// }
+if (isInteger) {
+	console.log(integerNum2 + ' is a integer number');
+} else {
+	console.log(integerNum2 + ' isnt a integer number');
+}
 
 // Task 5
 
