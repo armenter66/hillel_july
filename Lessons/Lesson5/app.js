@@ -54,8 +54,6 @@ for (let i = 15; i < 35; i++) {
 }
 
 console.log(productOfNumbers);
-3.386540329888963e27;
-3.386540329888963e27;
 
 // Task 6
 
