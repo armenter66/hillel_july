@@ -1,42 +1,11 @@
-// show products
-for (let i = 0; i < products.length; i++) {
-  console.log(`${i + 1}: ${products[i].name} $${products[i].price}`)
-}
+showProducts();
 
-// get from user number of product he wanna buy
-let productNumber;
-do {
-  productNumber = parseInt(prompt('Enter the number of product you wanna buy'));
-} while(isNaN(productNumber) || productNumber <= 0 || productNumber >= products.length);
+let productNumber = getProductNumber();
 
-// number (1...5) to index(0...4)
-productNumber--;
+let selectedProduct = products[productNumber - 1];
 
-let selectedProduct = products[productNumber];
+let productAmount = getProductAmount();
 
-// console.log(selectedProduct);
+let finalPrice = calculatePrice(selectedProduct, productAmount);
 
-
-// get from user amount of products
-let productAmount;
-
-do {
-  productAmount = parseInt(prompt('Enter the amount of products to buy'));
-} while(isNaN(productAmount) || productAmount < 1 || productAmount > 10);
-
-console.log(productAmount);
-
-// calculate final price
-
-let price = selectedProduct.price * productAmount;
-
-// check if discount needed
-if (price > 10000) {
-  price *= 0.95;
-}
-
-// show the final order info
-
-console.log(`
-  Congrats! You've just bought ${selectedProduct.name} x ${productAmount}. Final price is $${price}.
-`);
+showOrderDetails(selectedProduct, productAmount, finalPrice);
