@@ -1,27 +1,31 @@
-// Покласти в папку будь-які зображення 1.jpg, 2.jpg, 3.jpg, 4.jpg, 5.jpg, 6.jpg, 7.jpg, 8.jpg, 9.jpg. Вивести зображення, отримане випадковим чином (Math.random)
+//Створіть HTML-сторінку, яка містить список завдань (to-do list) з можливістю додавання нових завдань. Ваше ціль - використовуючи делегування подій, створити обробник подій для списку завдань, який дозволить видаляти завдання при кліку на них.
 
-const container = document.querySelector('.container');
-const imgBtn = document.querySelector('.imgBtn');
-const img = document.querySelector('.image');
+const tasks = document.querySelector('.tasks');
 
-const imageArr = [
-	'1.jpg',
-	'2.jpeg',
-	'3.jpeg',
-	'4.webp',
-	'5.jpeg',
-	'6.jpeg',
-	'7.jpg',
-	'8.webp',
-	'9.webp',
-];
+tasks.addEventListener('click', (event) => {
+	if (event.target && event.target.nodeName === 'BUTTON') {
+		const item = event.target.parentNode;
+		item.remove();
+	}
+});
 
-function randomImg() {
-	const randomIndex = Math.floor(Math.random() * imageArr.length);
-	img.src = imageArr[randomIndex];
-}
-
-imgBtn.addEventListener('click', (e) => {
+document.querySelector('.addBtn').addEventListener('click', (e) => {
 	e.preventDefault();
-	randomImg();
+	const myInput = document.querySelector('input');
+	const inputValue = myInput.value;
+	if (inputValue === ' ') {
+		return;
+	}
+
+	const newItem = document.createElement('li');
+	const deleteBtn = document.createElement('button');
+
+	deleteBtn.classList.add('deleteBtn');
+	deleteBtn.textContent = 'Delete';
+	newItem.classList.add('tasks__item');
+	newItem.textContent = inputValue;
+	newItem.appendChild(deleteBtn);
+
+	tasks.appendChild(newItem);
+	myInput.value = '';
 });
