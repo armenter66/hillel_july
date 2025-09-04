@@ -1,27 +1,11 @@
-// Покласти в папку будь-які зображення 1.jpg, 2.jpg, 3.jpg, 4.jpg, 5.jpg, 6.jpg, 7.jpg, 8.jpg, 9.jpg. Вивести зображення, отримане випадковим чином (Math.random)
+// Створіть HTML-сторінку з декількома кнопками. Ваше завдання - створити обробник подій для батьківського елементу, який відслідковуватиме кліки на всіх кнопках.
 
 const container = document.querySelector('.container');
-const imgBtn = document.querySelector('.imgBtn');
-const img = document.querySelector('.image');
+const firstBtn = document.querySelector('.mainBtn');
 
-const imageArr = [
-	'1.jpg',
-	'2.jpeg',
-	'3.jpeg',
-	'4.webp',
-	'5.jpeg',
-	'6.jpeg',
-	'7.jpg',
-	'8.webp',
-	'9.webp',
-];
-
-function randomImg() {
-	const randomIndex = Math.floor(Math.random() * imageArr.length);
-	img.src = imageArr[randomIndex];
-}
-
-imgBtn.addEventListener('click', (e) => {
-	e.preventDefault();
-	randomImg();
+container.addEventListener('click', (event) => {
+	if (event.target && event.target.nodeName === 'BUTTON') {
+		const buttonName = event.target.textContent;
+		console.log(`Clicked button: ${buttonName}`);
+	}
 });
