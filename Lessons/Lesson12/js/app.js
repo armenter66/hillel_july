@@ -87,7 +87,7 @@ const showProductInfo = (product) => {
     <h3>${product.name}</h3>
     <p>${product.description}</p>
     <span>Price: $${product.price}</span>
-  `;
+    `;
 };
 
 showCategories();
