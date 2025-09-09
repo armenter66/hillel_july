@@ -3,21 +3,30 @@ let str =
 
 let userStr = 'Armen1219_';
 
-
 let hashtag = str.match(/#\w+/g);
 
 let datePattern = /\d{2}\.\d{2}\.\d{4}/g;
 let dates = str.match(datePattern);
 
 let linkPattern = /https:\/\/[^\s]+/g;
-let links = str.match(linkPattern)
+let links = str.match(linkPattern);
 
 let userNamePattern = /^[A-z][A-z-0-9_]{2,14}$/;
 let userName = userStr.match(userNamePattern);
+
+let password1 = 'Armen';
+let password2 = 'Armen1221312';
+let password3 = 'Armen2131_&';
+
+let passwordPattern1 = /[A-Za-z]+$/;
+let passwordPattern2 = /^[A-Za-z-0-9]+$/;
+let passwordPattern3 = /^[A-Za-z-0-9_]\S+$/;
 
 console.log(hashtag);
 console.log(dates);
 console.log(links);
 console.log(userName);
 
-
+console.log(password1.match(passwordPattern1));
+console.log(password2.match(passwordPattern2));
+console.log(password3.match(passwordPattern3));
