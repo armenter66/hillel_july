@@ -8,12 +8,10 @@ const showCategories = () => {
 	categoriesList.addEventListener('click', (event) => {
 		if (event.target && event.target.tagName === 'LI') {
 			const categoryId = event.target.getAttribute('data-category');
-			// const category = getCategoryById(categoryId);
 			const category = categories[categoryId];
 			if (!category) {
 				return;
 			}
-			// console.log(category);
 			showProductsByCategory(category);
 		}
 	});
@@ -22,11 +20,6 @@ const showCategories = () => {
 		const element = document.createElement('li');
 		element.textContent = category.name;
 		element.setAttribute('data-category', category.id);
-
-		// element.addEventListener('click', () => {
-		//   console.log(category);
-		// });
-
 		categoriesList.appendChild(element);
 	});
 
@@ -47,7 +40,7 @@ const showProductsByCategory = (category) => {
 
 	productsList.addEventListener('click', (event) => {
 		if (event.target && event.target.tagName === 'LI') {
-			console.log(event.target);
+			// console.log(event.target);
 			// const categoryId = category.id
 			const categoryId = event.target.getAttribute('data-category');
 			const productId = event.target.getAttribute('data-product');
@@ -68,9 +61,9 @@ const showProductsByCategory = (category) => {
 		element.textContent = `${product.name} - $${product.price}`;
 		element.setAttribute('data-product', product.id);
 		element.setAttribute('data-category', category.id);
-		// element.addEventListener('click', () => {
-		//   console.log(product);
-		// })
+		element.addEventListener('click', () => {
+			console.log(product);
+		});
 		productsList.appendChild(element);
 	});
 
@@ -130,6 +123,8 @@ const showProductInfo = (product) => {
 		formChecking(product);
 	});
 };
+
+let ordersProduct = [];
 
 const formChecking = (product) => {
 	const orderBlock = document.querySelector('.order-details');
@@ -196,9 +191,100 @@ const formChecking = (product) => {
 			Quantity: ${quantity} <br> 
 			City: ${cityName} <br>
 			Comment: ${comment}
-		`;
+			`;
+
+			const myDate = new Date();
+			const str = `${myDate.getDate()}.${
+				myDate.getMonth() + 1
+			}.${myDate.getFullYear()}`;
+			const orderData = {
+				id: product.id,
+				name: product.name,
+				price: product.price,
+				amount: quantity,
+				date: str,
+			};
+
+			ordersProduct.push(orderData);
+			let jsonOrdersProduct = JSON.stringify(ordersProduct);
+			localStorage.setItem('product', jsonOrdersProduct);
 		}
 	});
 };
 
 showCategories();
+
+const orderBtn = document.querySelector('#orderBtn');
+
+orderBtn.addEventListener('click', () => {
+	const wrapper = document.querySelector('.wrapper');
+	const orderBlock = document.querySelector('.order-details');
+
+	wrapper.style.display = 'block';
+	orderBlock.style.display = 'none';
+	wrapper.innerHTML = '';
+
+	const orders = JSON.parse(localStorage.getItem('product')) || [];
+	console.log(orders);
+
+	orderBtn.style.display = 'none';
+
+	const backBtn = document.createElement('button');
+	backBtn.textContent = 'Back';
+	backBtn.addEventListener('click', () => {
+		wrapper.innerHTML = `
+		<div class="categories"></div>
+		<div class="products"></div>
+		<div class="info"></div>
+		`;
+
+		orderBtn.style.display = 'block';
+		wrapper.style.display = 'flex';
+
+		showCategories();
+	});
+
+	wrapper.appendChild(backBtn);
+
+	if (orders.length === 0) {
+		wrapper.innerHTML = 'You have no orders yet';
+	} else {
+		const ordersList = document.createElement('ul');
+		ordersList.className = 'orders__container';
+
+		for (let order of orders) {
+			const element = document.createElement('li');
+			element.textContent = `${order.name} - $${order.price}`;
+
+			const removeBtn = document.createElement('button');
+			removeBtn.textContent = 'remove';
+			removeBtn.style.marginLeft = '10px';
+
+			element.appendChild(removeBtn);
+
+			removeBtn.addEventListener('click', (event) => {
+				event.stopPropagation();
+
+				const newOrders = orders.filter((el) => el.id !== order.id);
+
+				localStorage.setItem('product', JSON.stringify(newOrders));
+
+				element.remove();
+			});
+
+			ordersList.appendChild(element);
+
+			element.addEventListener('click', () => {
+				wrapper.innerHTML = `
+					<h3>${order.name}</h3>
+					<p>Date: ${order.date}</p>
+					<p>Price: $${order.price}</p>
+					<p>Amount: ${order.amount}</p>
+				`;
+				wrapper.appendChild(backBtn);
+			});
+		}
+
+		wrapper.appendChild(ordersList);
+	}
+});
