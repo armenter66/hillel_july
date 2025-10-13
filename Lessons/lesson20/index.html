@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 20</title>
+  <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <style>
+      .container {
+        margin: 0 auto;
+        margin-top: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 100px;
+      }
+      .alert-wrapper {
+        text-align: center;
+      }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <button id="tooltip" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal"  data-bs-title="Hello, this button opens modal"> Open bootstrap modal
+  </button>
+
+  <div class="alert-wrapper">
+    <div id="liveAlertPlaceholder"></div>
+    <button type="button" class="btn btn-primary" id="liveAlertBtn"> Show alert </button>
+  </div>
+</div>
+
+
+
+<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel"> This is modal for homework 20.1</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      Hello user! 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/node_modules/moment/min/moment.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
