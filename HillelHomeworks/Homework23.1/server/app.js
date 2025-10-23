@@ -49,16 +49,8 @@ app.put('/api/todos/:id', (request, response) => {
 		return response.sendStatus(400);
 	}
 
-	const updatedTodo = {
-		id: index,
-		title: title,
-		description: description || '',
-		priority: priority,
-		status: status,
-	};
-
-	todos[index] = updatedTodo;
-	response.json(updatedTodo);
+	todos[index].status = request.body.status;
+	response.json(todos[index]);
 });
 
 app.delete('/api/todos/:id', (request, response) => {

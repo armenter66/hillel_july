@@ -25,6 +25,12 @@ function renderTodo(task) {
     <button data-id="${task.id}" class="delete-btn">Delete</button>
     <button data-id="${task.id}" class="done-btn">Done</button>
     `;
+
+	if (task.status === 'done') {
+		li.classList.add('done');
+		li.querySelector('.delete-btn').disabled = true;
+		li.querySelector('.done-btn').disabled = true;
+	}
 	todoList.appendChild(li);
 }
 
