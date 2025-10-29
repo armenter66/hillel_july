@@ -1,0 +1,27 @@
+[
+	{ "id": 1, "name": "Dodo", "path": "/assets/Dodo.svg", "votes": 0 },
+	{
+		"id": 2,
+		"name": "Cowboy",
+		"path": "/assets/CowboyFace.svg",
+		"votes": 0
+	},
+	{
+		"id": 3,
+		"name": "Devil",
+		"path": "/assets/WithHorns.svg",
+		"votes": 0
+	},
+	{
+		"id": 4,
+		"name": "Love",
+		"path": "/assets/WithHeartEyes.svg",
+		"votes": 0
+	},
+	{
+		"id": 5,
+		"name": "Cool",
+		"path": "/assets/WithSunglasses.svg",
+		"votes": 0
+	}
+]
