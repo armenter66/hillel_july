@@ -1,11 +1,32 @@
+import { BrowserRouter, Routes, Route} from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import './App.css'
 import AddPage from './components/AddPage'
 import ContactPage from './components/ContactPage'
+import Menu from './components/Menu'
+import { ThemeContext, LangContext } from './contexts/Context'
+import { translations } from './assets/translations'
 
 function App() {
-  const [isPage, setPage] = useState('contacts');
   const [contacts, setContacts] = useState([]);
+  const [theme, setTheme] = useState('light');
+  const [lang, setLang] = useState('en');
+
+  useEffect(()=> {
+    const currentLang = localStorage.getItem('lang');
+    const currentTheme = localStorage.getItem('theme');
+    if (currentLang) setLang(currentLang);
+    if (currentTheme) setTheme(currentTheme);
+  }, []);
+
+  useEffect(()=> {
+    localStorage.setItem('theme', theme);
+    document.body.className = theme === 'dark' ? 'dark-theme': 'light-theme';
+  }, [theme]);
+
+  useEffect(()=> {
+    localStorage.setItem('lang', lang);
+  }, [lang])
 
   useEffect(() => {
         const loadData = async ()=> {
@@ -17,7 +38,6 @@ function App() {
 
         const localContacts = localStorage.getItem('contacts');
         localContacts ? setContacts(JSON.parse(localContacts)) : loadData(); 
-
   }, [])
 
   const addContact = (newContact) => {
@@ -31,20 +51,37 @@ function App() {
     localStorage.setItem('contacts', JSON.stringify(deletedContacts));
   }
 
-  const handlePage = (page) => {
-    setPage(page);
+  const toggleTheme = ()=> {
+    setTheme(current => current === 'light' ? 'dark' : 'light');
   }
 
-  const currentPage = isPage === 'contacts' ?  <ContactPage contacts={contacts} deleteContact={deleteContact}/> : <AddPage contacts={contacts} addContact={addContact} handlePage={handlePage}/>; 
+  const toggleLang = ()=> {
+    setLang(current => current === 'en' ? 'ua' : 'en');
+  }
+
+  const translate = (key)=> {
+    return translations[lang][key] || key;
+  }
 
   return (
-    <>
-    <div className="app-controls">
-      <button className={isPage === 'contacts' ? 'control-btn active' : 'control-btn'} type="button" onClick={()=> handlePage('contacts')}>Contacts</button>
-      <button className={isPage === 'add' ? 'control-btn active' : 'control-btn'} type="button" onClick={()=> handlePage('add')}>Add contact</button>
-    </div>
-    {currentPage}
-    </>
+    <BrowserRouter>
+      <ThemeContext.Provider value={{theme, toggleTheme}}>
+      <LangContext.Provider value={{lang, toggleLang, translate}}>
+      <header> 
+        <nav>
+          <Menu/>
+        </nav>
+      </header>
+      <Routes>
+        <Route path='/' element={<ContactPage contacts={contacts} deleteContact={deleteContact}/>}/>
+        <Route path='/add-contact' element={<AddPage contacts={contacts} addContact={addContact} />}/>
+      </Routes>
+
+      </LangContext.Provider>
+      </ThemeContext.Provider>
+    </BrowserRouter>
+
+      
   )
 }
 
