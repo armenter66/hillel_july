@@ -1,0 +1,170 @@
+.container {
+	margin: 0 auto;
+	margin-top: 80px;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	gap: 80px;
+	padding: 0 20px;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+}
+#tooltip.btn,
+.btn-primary {
+	background: -webkit-gradient(
+		linear,
+		left top,
+		left bottom,
+		from(#0d6efd),
+		to(#0b5ed7)
+	);
+	background: linear-gradient(180deg, #0d6efd 0%, #0b5ed7 100%);
+	border: none;
+	color: #fff;
+	padding: 0.6rem 1.1rem;
+	font-weight: 600;
+	border-radius: 8px;
+	-webkit-box-shadow: 0 6px 18px rgba(13, 110, 253, 0.18),
+		inset 0 -1px 0 hsla(0, 0%, 100%, 0.06);
+	box-shadow: 0 6px 18px rgba(13, 110, 253, 0.18),
+		inset 0 -1px 0 hsla(0, 0%, 100%, 0.06);
+	-webkit-transition: -webkit-transform 120ms ease, -webkit-box-shadow 120ms ease,
+		-webkit-filter 120ms ease;
+	transition: -webkit-transform 120ms ease, -webkit-box-shadow 120ms ease,
+		-webkit-filter 120ms ease;
+	transition: transform 120ms ease, box-shadow 120ms ease, filter 120ms ease;
+	transition: transform 120ms ease, box-shadow 120ms ease, filter 120ms ease,
+		-webkit-transform 120ms ease, -webkit-box-shadow 120ms ease,
+		-webkit-filter 120ms ease;
+	cursor: pointer;
+	display: -webkit-inline-box;
+	display: -ms-inline-flexbox;
+	display: inline-flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	gap: 8px;
+}
+#tooltip.btn .bi,
+.btn-primary .bi {
+	font-size: 1.05rem;
+}
+#tooltip.btn:hover,
+.btn-primary:hover {
+	-webkit-filter: brightness(1.06);
+	filter: brightness(1.06);
+	-webkit-transform: translateY(-2px);
+	transform: translateY(-2px);
+}
+#tooltip.btn:active,
+.btn-primary:active {
+	-webkit-transform: translateY(0);
+	transform: translateY(0);
+	-webkit-box-shadow: 0 4px 12px rgba(13, 110, 253, 0.14);
+	box-shadow: 0 4px 12px rgba(13, 110, 253, 0.14);
+}
+#tooltip.btn:focus-visible,
+.btn-primary:focus-visible {
+	outline: none;
+	-webkit-box-shadow: 0 0 0 4px rgba(13, 110, 253, 0.18);
+	box-shadow: 0 0 0 4px rgba(13, 110, 253, 0.18);
+	border-radius: 8px;
+}
+.alert-wrapper {
+	text-align: center;
+}
+#liveAlertPlaceholder .alert {
+	border-radius: 8px;
+	-webkit-box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+	box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+	-webkit-transition: opacity 180ms ease, -webkit-transform 180ms ease;
+	transition: opacity 180ms ease, -webkit-transform 180ms ease;
+	transition: transform 180ms ease, opacity 180ms ease;
+	transition: transform 180ms ease, opacity 180ms ease,
+		-webkit-transform 180ms ease;
+}
+.modal-backdrop.show {
+	background-color: rgba(0, 0, 0, 0.45);
+	backdrop-filter: blur(3px);
+}
+.modal-content {
+	border-radius: 10px;
+	border: none;
+	overflow: hidden;
+	-webkit-box-shadow: 0 30px 80px rgba(2, 6, 23, 0.35);
+	box-shadow: 0 30px 80px rgba(2, 6, 23, 0.35);
+}
+.modal-header {
+	background: -webkit-gradient(
+		linear,
+		left top,
+		right top,
+		from(rgba(13, 110, 253, 0.06)),
+		to(rgba(102, 16, 242, 0.03))
+	);
+	background: linear-gradient(
+		90deg,
+		rgba(13, 110, 253, 0.06),
+		rgba(102, 16, 242, 0.03)
+	);
+	border-bottom: none;
+	padding: 1rem 1.25rem;
+}
+.modal-header .modal-title {
+	font-size: 1.05rem;
+	font-weight: 700;
+	color: #0b2a66;
+}
+.modal-body {
+	padding: 1.25rem;
+	font-size: 0.98rem;
+	color: #1f2d3d;
+	line-height: 1.5;
+}
+.modal-footer {
+	padding: 0.85rem 1.25rem;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: end;
+	-ms-flex-pack: end;
+	justify-content: flex-end;
+	gap: 8px;
+	background: #fafbfd;
+}
+.btn-close {
+	width: 2rem;
+	height: 2rem;
+	border-radius: 6px;
+	-webkit-transition: background 120ms ease;
+	transition: background 120ms ease;
+}
+.btn-close:hover {
+	background: rgba(0, 0, 0, 0.04);
+}
+.tooltip .tooltip-inner {
+	background: #222;
+	color: #fff;
+	font-size: 0.85rem;
+	padding: 6px 8px;
+	border-radius: 6px;
+}
+@media (max-width: 600px) {
+	.container {
+		margin-top: 40px;
+		gap: 20px;
+		-webkit-box-orient: vertical;
+		-webkit-box-direction: normal;
+		-ms-flex-direction: column;
+		flex-direction: column;
+	}
+	.modal-dialog {
+		margin: 1.5rem;
+	}
+} /*# sourceMappingURL=style.min.css.map */

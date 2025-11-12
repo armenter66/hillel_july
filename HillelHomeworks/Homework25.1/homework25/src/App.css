@@ -1,0 +1,30 @@
+#root {
+	max-width: 1280px;
+	margin: 0 auto;
+	padding: 2rem;
+	text-align: center;
+}
+
+.emoji__list {
+  margin-top: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 50px;
+}
+
+.emoji__title {
+  font-size: 48px;
+  text-transform: uppercase;
+}
+
+.emoji__btn {
+	width: 200px;
+	height: 50px;
+	background: #171717;
+	color: #fff;
+	margin-top: 40px;
+	text-transform: uppercase;
+	border-radius: 10px;
+	cursor: pointer;
+}

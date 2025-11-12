@@ -1,0 +1,155 @@
+$primary: #0d6efd;
+$primary-dark: #0b5ed7;
+$accent: #6610f2;
+$radius: 10px;
+
+@mixin transition($value...) {
+	transition: $value;
+}
+
+.container {
+	margin: 0 auto;
+	margin-top: 80px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 80px;
+	padding: 0 20px;
+	flex-wrap: wrap;
+}
+
+/* Button styling */
+#tooltip.btn,
+.btn-primary {
+	background: linear-gradient(180deg, $primary 0%, $primary-dark 100%);
+	border: none;
+	color: #fff;
+	padding: 0.6rem 1.1rem;
+	font-weight: 600;
+	border-radius: $radius - 2px;
+	box-shadow: 0 6px 18px rgba(13, 110, 253, 0.18),
+		inset 0 -1px 0 rgba(255, 255, 255, 0.06);
+	@include transition(
+		transform 120ms ease,
+		box-shadow 120ms ease,
+		filter 120ms ease
+	);
+	cursor: pointer;
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+
+	.bi {
+		font-size: 1.05rem;
+	}
+
+	&:hover {
+		filter: brightness(1.06);
+		transform: translateY(-2px);
+	}
+
+	&:active {
+		transform: translateY(0);
+		box-shadow: 0 4px 12px rgba(13, 110, 253, 0.14);
+	}
+
+	&:focus-visible {
+		outline: none;
+		box-shadow: 0 0 0 4px rgba(13, 110, 253, 0.18);
+		border-radius: $radius - 2px;
+	}
+}
+
+/* Alert wrapper */
+.alert-wrapper {
+	text-align: center;
+}
+
+#liveAlertPlaceholder {
+	.alert {
+		border-radius: 8px;
+		box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+		@include transition(transform 180ms ease, opacity 180ms ease);
+	}
+}
+
+/* Modal styling */
+.modal-backdrop {
+	&.show {
+		background-color: rgba(0, 0, 0, 0.45);
+		backdrop-filter: blur(3px);
+	}
+}
+
+.modal-content {
+	border-radius: $radius;
+	border: none;
+	overflow: hidden;
+	box-shadow: 0 30px 80px rgba(2, 6, 23, 0.35);
+}
+
+.modal-header {
+	background: linear-gradient(
+		90deg,
+		rgba(13, 110, 253, 0.06),
+		rgba(102, 16, 242, 0.03)
+	);
+	border-bottom: none;
+	padding: 1rem 1.25rem;
+
+	.modal-title {
+		font-size: 1.05rem;
+		font-weight: 700;
+		color: #0b2a66;
+	}
+}
+
+.modal-body {
+	padding: 1.25rem;
+	font-size: 0.98rem;
+	color: #1f2d3d;
+	line-height: 1.5;
+}
+
+.modal-footer {
+	padding: 0.85rem 1.25rem;
+	display: flex;
+	justify-content: flex-end;
+	gap: 8px;
+	background: #fafbfd;
+}
+
+/* Close button */
+.btn-close {
+	width: 2rem;
+	height: 2rem;
+	border-radius: 6px;
+	@include transition(background 120ms ease);
+
+	&:hover {
+		background: rgba(0, 0, 0, 0.04);
+	}
+}
+
+/* Tooltip tweaks */
+.tooltip {
+	.tooltip-inner {
+		background: #222;
+		color: #fff;
+		font-size: 0.85rem;
+		padding: 6px 8px;
+		border-radius: 6px;
+	}
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+	.container {
+		margin-top: 40px;
+		gap: 20px;
+		flex-direction: column;
+	}
+	.modal-dialog {
+		margin: 1.5rem;
+	}
+}

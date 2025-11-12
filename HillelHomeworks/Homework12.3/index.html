@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework 12.3</title>
+    <script src="app.js" defer></script>
+    <style>
+        .container {
+            margin: 0 auto;
+            max-width: 800px;
+        }
+        .addBtn {
+            border: 1px solid #000;
+            border-radius: 30px;
+            padding: 5px 10px;
+            height: 30px;
+            cursor: pointer;
+            background-color: #757575;
+            color: #fff;
+            text-transform: uppercase;
+        }
+        .tasks {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        input {
+            height: 30px;
+            width: 200px;
+            border: 1px solid #000;
+            border-radius: 10px;
+            box-sizing: border-box;
+            padding: 5px;
+        }
+        .deleteBtn {
+            background-color: blue;
+            color: #fff;
+            padding: 5px 15px;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+        }
+        li {
+            display: flex;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <ul class="tasks">
+            <li class="tasks__item">
+                Task 1
+                <button class="deleteBtn">Delete</button>
+            </li>
+            <li class="tasks__item">
+                Task 2
+                <button class="deleteBtn">Delete</button>
+            </li>
+            <li class="tasks__item">
+                Task 3
+                <button class="deleteBtn">Delete</button>
+            </li>
+        </ul>
+
+
+        <input type="text" name="todo-item"
+        placeholder="Enter a task">
+        <button class="addBtn">add item
+        </button>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 13</title>
+    <script src="app.js" defer></script>
+    <style>
+        .container {
+            display: flex;
+            gap: 150px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form action="" class="form" name="mainForm">
+            <input type="text" name="FirstName" placeholder="Enter your First and Last name">
+            <br>
+            <input type="text" name="date" placeholder="Enter your date of birth">
+
+            <h4>Gender</h4>
+            <p><input type="radio" name="gender" value="MA">Male</p>
+            <p><input type="radio" name="gender" value="FE">Female</p>
+
+            <h4>City</h4>
+            <select name="city">
+                <option value="LO">London</option>
+                <option value="NY">New-York</option>
+                <option value="KY">Kyiv</option>
+                <option value="ST">Stambul</option>
+            </select>
+            <br>
+            <textarea name="address" placeholder="Enter your address"></textarea>
+            <br>
+            <h4>Languages</h4>
+            <p><input type="checkbox" name="langs" value="EN">English</p>
+            <p><input type="checkbox" name="langs" value="UA">Ukrainian</p>
+            <p><input type="checkbox" name="langs" value="PO">Polish</p>
+            <p><input type="checkbox" name="langs" value="AM">Armenian</p>
+
+            <br>
+            <button type="button"> SAVE </button>
+        </form>
+    </div>
+</body>
+</html>

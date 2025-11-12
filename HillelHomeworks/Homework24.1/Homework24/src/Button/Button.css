@@ -1,0 +1,28 @@
+.myBtn1 {
+	border-color: black;
+	background: black;
+	text-transform: uppercase;
+	width: 150px;
+	color: #fff;
+	font-weight: 600;
+}
+
+.myBtn1:hover {
+	background: #fff;
+	color: #000;
+}
+
+.myBtn2 {
+	border-color: black;
+	background: blue;
+	color: #fff;
+	text-transform: uppercase;
+	margin-top: 20px;
+	width: 150px;
+	font-weight: 600;
+}
+
+.myBtn2:hover {
+	background: #fff;
+	color: blue;
+}
