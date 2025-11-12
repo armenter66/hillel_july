@@ -3,12 +3,13 @@
 	"private": true,
 	"version": "0.0.0",
 	"type": "module",
-	"homepage": "https://armenter66.github.io/hillel_july/Homeworks/Homework28/",
+	"homepage": "https://armenter66.github.io/HillelHomeworks/Homework28.1/homework28/",
 	"scripts": {
 		"dev": "vite",
 		"build": "vite build",
 		"lint": "eslint .",
 		"preview": "vite preview",
+		"predeploy": "npm run build",
 		"deploy": "gh-pages -d dist -b gh-pages -a"
 	},
 	"dependencies": {
