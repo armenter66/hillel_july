@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { UserContext } from "../../contexts/Context";
 import { useNavigate } from "react-router-dom";
 import { AuthSchema } from "../../common/validationSchemas";
+import './AuthForm.css';
 
 export default function AuthForm() {
   const user = useContext(UserContext);
@@ -26,6 +27,7 @@ export default function AuthForm() {
         .then(response => response.json())
         .then(result => {
           user.change(result);
+          localStorage.setItem("user", JSON.stringify(result));
           navigate('/')
         })
     },

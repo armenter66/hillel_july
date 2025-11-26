@@ -6,8 +6,14 @@ import { UserContext } from "./contexts/Context";
 import { useState } from "react";
 
 
+// Відображення у вигляді таблиці (grid) або стилізованих карток
+
+
 function App() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(() => {
+    const saved = localStorage.getItem("user");
+    return saved ? JSON.parse(saved) : null;
+  });
 
   return (
     <>

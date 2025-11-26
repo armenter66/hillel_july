@@ -31,24 +31,24 @@ export default function NewProjectPage() {
   }, [navigate, isProjectSaved])
 
   return (
-    <div>
-      <h1>Add new Project</h1>
-      <form>
-        <div>
-          <input type="text" name="title" placeholder="Enter title" ref={titleRef} />
+    <div className="NewProjectPage">
+      <h1 className="page-title">Add new Project</h1>
+      <form className="new-form">
+        <div className="form-row">
+          <input type="text" name="title" className="input" placeholder="Enter title" ref={titleRef} />
         </div>
-        <div>
-          <textarea name="description" placeholder="Enter description" ref={descriptionRef}></textarea>
+        <div className="form-row">
+          <textarea name="description" className="textarea" placeholder="Enter description" ref={descriptionRef}></textarea>
         </div>
-        <div>
-          <select name="priority" ref={priorityRef}>
+        <div className="form-row">
+          <select name="priority" className="select" ref={priorityRef}>
             {Object.entries(PRIORITIES).map(([key, value]) => (
               <option key={key} value={key}>{value}</option>
             ))}
           </select>
         </div>
         <div>
-          <button type="button" onClick={handleSave}>Save</button>
+          <button type="button" className="btn primary" onClick={handleSave}>Save</button>
         </div>
       </form>
     </div>

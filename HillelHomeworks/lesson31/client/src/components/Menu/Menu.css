@@ -1,6 +1,155 @@
+/* ...existing code... */
+
+/* Generic nav-based selectors so Menu.jsx (nav > ul > li > a) is styled without extra classes */
+nav {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0;
+  padding: 6px 12px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* reset list and layout */
 nav ul {
   list-style: none;
-  display: flex;
-  gap: 20px;
+  margin: 0;
   padding: 0;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+/* keep li minimal */
+nav li {
+  margin: 0;
+  padding: 0;
+}
+
+/* links inside nav */
+nav a,
+nav a:link,
+nav a:visited {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  color: #374151;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition: background 120ms ease, color 120ms ease, transform 120ms ease;
+}
+
+/* hover / focus */
+nav a:hover,
+nav a:focus {
+  background: rgba(24,144,255,0.06);
+  color: #0f1724;
+  transform: translateY(-2px);
+  outline: none;
+}
+
+/* optional active state if your router adds an active class */
+nav a.active {
+  background: rgba(24,144,255,0.12);
+  color: #096dd9;
+  box-shadow: 0 6px 14px rgba(24,144,255,0.08);
+}
+
+/* right-side actions - if using a flex stretch in parent */
+nav .actions {
+  margin-left: auto;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* small responsive behavior: hide full nav on narrow screens */
+@media (max-width: 720px) {
+  nav ul {
+    display: none;
+  }
+}
+```// filepath: /Users/armenter66/Downloads/HillellIT/HillelHomeworks/lesson31/client/src/components/Menu/Menu.css
+/* ...existing code... */
+
+/* Generic nav-based selectors so Menu.jsx (nav > ul > li > a) is styled without extra classes */
+nav {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0;
+  padding: 6px 12px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* reset list and layout */
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+/* keep li minimal */
+nav li {
+  margin: 0;
+  padding: 0;
+}
+
+/* links inside nav */
+nav a,
+nav a:link,
+nav a:visited {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  color: #374151;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition: background 120ms ease, color 120ms ease, transform 120ms ease;
+}
+
+/* hover / focus */
+nav a:hover,
+nav a:focus {
+  background: rgba(24,144,255,0.06);
+  color: #0f1724;
+  transform: translateY(-2px);
+  outline: none;
+}
+
+/* optional active state if your router adds an active class */
+nav a.active {
+  background: rgba(24,144,255,0.12);
+  color: #096dd9;
+  box-shadow: 0 6px 14px rgba(24,144,255,0.08);
+}
+
+/* right-side actions - if using a flex stretch in parent */
+nav .actions {
+  margin-left: auto;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* small responsive behavior: hide full nav on narrow screens */
+@media (max-width: 720px) {
+  nav ul {
+    display: none;
+  }
 }

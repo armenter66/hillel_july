@@ -1,8 +1,8 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import axios from 'axios';
 
 const initialState = {
-  data: [],
+	data: [],
 };
 
 /*
@@ -17,22 +17,62 @@ const initialState = {
 }
 */
 
-export const getTasksAsync = createAsyncThunk('tasks/getList', async (projectId = '') => {
-  const result = await axios.get(`http://localhost:3000/tasks/${projectId}`);
-  return result.data;
+export const getTasksAsync = createAsyncThunk(
+	'tasks/getList',
+	async (projectId = '') => {
+		const result = await axios.get(`http://localhost:3000/tasks/${projectId}`);
+		return result.data;
+	}
+);
+
+export const createTaskAsync = createAsyncThunk(
+	'tasks/create',
+	async (taskData) => {
+		const response = await axios.post('http://localhost:3000/tasks', taskData);
+		return response.data;
+	}
+);
+
+export const updateTaskAsync = createAsyncThunk(
+	'tasks/update',
+	async ({ id, updates }) => {
+		const response = await axios.put(
+			`http://localhost:3000/tasks/${id}`,
+			updates
+		);
+		return response.data;
+	}
+);
+
+export const deleteTaskAsync = createAsyncThunk('tasks/delete', async (id) => {
+	await axios.delete(`http://localhost:3000/tasks/${id}`);
+	return id;
 });
 
 const tasksSlice = createSlice({
-  name: 'tasks',
-  initialState,
-  reducers: {
+	name: 'tasks',
+	initialState,
+	reducers: {},
+	extraReducers: (builder) => {
+		builder
+			.addCase(getTasksAsync.fulfilled, (state, action) => {
+				state.data = action.payload;
+			})
+			.addCase(createTaskAsync.fulfilled, (state, action) => {
+				state.data.push(action.payload);
+			})
+			.addCase(updateTaskAsync.fulfilled, (state, action) => {
+				const updated = action.payload;
+				const index = state.data.findIndex((t) => t.id === updated.id);
+				if (index !== -1) {
+					state.data[index] = updated;
+				}
+			})
+			.addCase(deleteTaskAsync.fulfilled, (state, action) => {
+				const id = action.payload;
+				state.data = state.data.filter((t) => t.id !== id);
+			});
+	},
+});
 
-  },
-  extraReducers: builder => {
-    builder.addCase(getTasksAsync.fulfilled, (state, action) => {
-      state.data = action.payload;
-    })
-  }
-})
-
-export default tasksSlice.reducer
+export default tasksSlice.reducer;
